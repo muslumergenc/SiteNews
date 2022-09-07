@@ -1,0 +1,55 @@
+﻿@model LoginViewModel
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Login";
+}
+<div class="login-logo">
+    <a href="/"><b>Yönetim</b></a>
+</div>
+<div class="card">
+    <div class="card-body login-card-body">
+           <p class="login-box-msg">Yönetim sayfası için giriş yapınız</p>
+           <form asp-action="index" method="post">
+               <div class="text-danger" asp-validation-summary="All"></div>
+               <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                 <div class="input-group mb-3">
+                <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-7">
+                    <div class="icheck-primary">
+                        <input type="checkbox" asp-for="RememberMe">
+                        <label asp-for="RememberMe">
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block">Giriş</button>
+                    <a href="/" class="btn btn-danger btn-block">Siteye Dön</a>
+                </div>
+            </div>
+           </form>
+             <p class="mb-1">
+            <a href="/login/forgotpassword">Şifremi Unuttum</a>
+        </p>
+        <p class="mb-0">
+            <a href="/login/register" class="text-center">Kayıt</a>
+        </p>
+    </div>
+</div>

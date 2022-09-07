@@ -1,0 +1,52 @@
+﻿@model Kategori
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Kategori Ekle</h3>
+                        </div>
+                        <form asp-action="Create" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="card-body">
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Kategori Adı</label>
+                                    <input asp-for="Ad" type="text" class="form-control" placeholder="Kategori Adı" />
+                                    <span asp-validation-for="Ad" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="Url" class="control-label"></label>
+                                    <input asp-for="Url" type="text" class="form-control" placeholder="Sayfa Linki" />
+                                    <span asp-validation-for="Url" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label asp-for="SeoDesc" class="control-label"></label>
+                                    <textarea asp-for="SeoDesc" type="text" rows="3" class="form-control" maxlength="150" placeholder="Max. 150 Karakter"></textarea>
+                                    <span asp-validation-for="SeoDesc" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Sıra</label>
+                                    <input asp-for="Sira" type="number" class="form-control" placeholder="Sıra" />
+                                    <span asp-validation-for="Sira" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <input type="submit" value="Kaydet" class="btn btn-primary btn-sm" /> |
+                                <a href="/admin/kategoriler" class="btn btn-secondary btn-sm">Listeye Geri Dön</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

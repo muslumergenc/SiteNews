@@ -1,0 +1,65 @@
+﻿@using SiteNews.Web.Identity
+@model List<User>
+@{
+    ViewData["Title"] = "Kullanicilar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    @if (TempData["message"] != null)
+                    {
+                        <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+                    }
+                    <div class="card-header">
+                        <h3 class="card-title">Kullanıcı Listesi</h3>
+                        <a asp-action="KullaniciEkle" class="float-right btn btn-sm bg-gradient-info btn-flat">Yeni Ekle +</a>
+                    </div>
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Count > 0)
+                                {
+                                    @foreach (User item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Email</td>
+                                            <td>
+                                                <a asp-action="kullaniciekle" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Güncelle</a> |
+                                                <a asp-action="kullanicilar" asp-route-id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silmek İstediğinize Eminmisiniz?')">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="alert alert-warning">
+                                                <h3>Kullanıcı Bulunamadı</h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

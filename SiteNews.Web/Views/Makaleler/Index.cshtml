@@ -1,0 +1,92 @@
+﻿@model List<Haber>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    @if (TempData["message"] != null)
+                    {
+                        <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+                    }
+                    <div class="card-header">
+                        <h3 class="card-title">Makale Listesi</h3><br />
+                        <form action="/makaleler/index">
+                            <button type="submit" name="q" value="read" class="float-left btn btn-sm bg-gradient-danger text-white">
+                                En Çok Okunanları Listele
+                            </button>
+                        </form>
+                        <a asp-action="Create" class="float-right btn btn-sm bg-gradient-info btn-flat">Makale Ekle +</a>
+                    </div>
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Başlık</th>
+                                    <th>Yazar</th>
+                                    <th>Okunma Sayısı</th>
+                                    <th>Sayfa Link</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Count() > 0)
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src='/images/haberler/@Html.DisplayFor(modelItem => item.Foto)' width="100" height="60" />
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Baslik)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Yazars.Ad)
+                                            </td>
+                                            <td>
+                                                @item.Okunma.ToString()
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Url)
+                                            </td>
+                                            <td>
+                                                <a target="_blank" href="/@item.Url" class="btn btn-secondary btn-sm">Sitede İncele</a> |
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Güncelle</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="alert alert-warning">
+                                                <h3>Makale Bulunamadı</h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Başlık</th>
+                                    <th>Yazar</th>
+                                    <th>Okunma Sayısı</th>
+                                    <th>Sayfa Link</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

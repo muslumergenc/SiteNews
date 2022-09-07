@@ -1,0 +1,39 @@
+﻿@model SosyalMedya
+@{
+    ViewData["Title"] = "SosyalMedyaEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Sosyal Medya Ekle</h3>
+                        </div>
+                        <form asp-action="SosyalMedyaEkle" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="card-body">
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Sosyal Medya Adı</label>
+                                    <input asp-for="Name" type="text" class="form-control" placeholder="Sosyal Medya Adı" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="Link" class="control-label"></label>
+                                    <input asp-for="Link" type="text" class="form-control" placeholder="Sayfa Linki" />
+                                    <span asp-validation-for="Link" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <input type="submit" value="Kaydet" class="btn btn-primary btn-sm" /> |
+                                <a href="/admin/sosyalmedya" class="btn btn-secondary btn-sm">Listeye Geri Dön</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

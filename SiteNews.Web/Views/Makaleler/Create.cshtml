@@ -1,0 +1,104 @@
+﻿@model Haber
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Makale Ekle</h3>
+                        </div>
+                        <form asp-controller="Makaleler" asp-action="Create" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="card-body">
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Yazar</label>
+                                    <select class="form-control" asp-for="YazarId" asp-items="@ViewBag.Yazarlar">
+                                        <option value="">Yazar Seçiniz</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Başlık</label>
+                                    <input asp-for="Baslik" type="text" class="form-control" />
+                                    <span asp-validation-for="Baslik" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Kısa Açıklama</label>
+                                    <textarea type="text" rows="3" asp-for="KisaAciklama" class="form-control"></textarea>
+                                    <span asp-validation-for="KisaAciklama" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <div class="card card-outline card-info">
+                                        <div class="card-header">
+                                            <label class="control-label">Detay</label>
+                                        </div>
+                                        <div class="pad">
+                                            <div class="mb-3">
+                                                <textarea asp-for="Detay" class="textarea" style="line-height: 18px; border: 1px solid #dddddd; padding:10px;"></textarea>
+                                                <span asp-validation-for="Detay" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Sayfa Linki</label>
+                                    <input asp-for="Url" type="text" class="form-control" />
+                                    <span asp-validation-for="Url" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Seo Description</label>
+                                    <textarea asp-for="SeoDesc" type="text" rows="3" class="form-control" maxlength="150" placeholder="Max. 150 Karakter"></textarea>
+                                    <span asp-validation-for="SeoDesc" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputFile">Resim Seç</label>
+                                    <div class="input-group">
+                                        <div class="description-block">
+                                            <input type="file" id="files" name="files" class="form-control" />
+                                            <span asp-validation-for="Foto" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="checbox">
+                                        <label>Ana Manşet Olarak Ekle</label>
+                                        <input asp-for="MansetMi" type="checkbox" class="checbox" />
+                                        <span asp-validation-for="MansetMi" class="text-danger"></span>
+                                    </div>
+                                    <div class="checbox">
+                                        <label asp-for="EkMansetMi" class="control-label">2.Manşet Olarak Ekle</label>
+                                        <input asp-for="EkMansetMi" type="checkbox" class="checbox" />
+                                        <span asp-validation-for="EkMansetMi" class="text-danger"></span>
+                                    </div>
+                                    <div class="checbox">
+                                        <label asp-for="EditorMu" class="control-label">Editör Yazılarına Ekle</label>
+                                        <input asp-for="EditorMu" type="checkbox" class="checbox" />
+                                        <span asp-validation-for="EditorMu" class="text-danger"></span>
+                                    </div>
+                                    <div class="checbox">
+                                        <label asp-for="PopulerMi" class="control-label">Popüler Haberlere Ekle</label>
+                                        <input asp-for="PopulerMi" type="checkbox" class="checbox" />
+                                        <span asp-validation-for="PopulerMi" class="text-danger"></span>
+                                    </div>
+                                    <div class="checbox">
+                                        <label asp-for="SonHaberMi" class="control-label">Son Haberlere Ekle</label>
+                                        <input asp-for="SonHaberMi" type="checkbox" class="checbox" />
+                                        <span asp-validation-for="SonHaberMi" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <input type="submit" value="Kaydet" class="btn btn-primary btn-sm" /> |
+                                <a href="/makaleler" class="btn btn-secondary btn-sm">Listeye Geri Dön</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

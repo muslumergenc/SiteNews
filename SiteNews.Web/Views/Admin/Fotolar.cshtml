@@ -1,0 +1,47 @@
+﻿@model List<PhotoModel>
+@{
+    ViewData["Title"] = "Fotolar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Foto Galeri
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="Fotolar" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <input type="file" multiple name="files" class="form-control" />
+                                        <input type="submit" class="btn btn-primary btn-sm" value="Yükle" />
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                @foreach (PhotoModel item in Model)
+                                {
+                                    <div class="col-sm-2">
+                                        <a href="~/images/galeri/@item.ImageUrl" data-toggle="lightbox" data-gallery="gallery">
+                                            <img src="~/images/galeri/@item.ImageUrl" width="250" height="250" class="img-fluid mb-2" alt="#" />
+                                        </a>
+                                        <form asp-action="FotoSil" method="post">
+                                            <input type="hidden" name="fileName" value="@item.ImageUrl">
+                                            <input type="submit" value="Sil" class="btn btn-xs btn-danger" onclick="return confirm('Silmek İstediğinize Eminmisiniz?')" />
+                                        </form>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

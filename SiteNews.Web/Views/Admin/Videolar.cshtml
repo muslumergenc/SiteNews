@@ -1,0 +1,66 @@
+﻿@model Video
+@{
+    ViewData["Title"] = "Videolar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            @if (TempData["message"] != null)
+                            {
+                                <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+                            }
+                            <div class="card-title">
+                                Video Galeri
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="Videolar" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <label>Video Linkini Yazınız</label>
+                                        <input type="url" name="url" required class="form-control text" placeholder="Linki Buraya Kopyalayın..." />
+                                        <input type="submit" class="btn btn-primary btn-sm" value="Yükle" />
+                                    </div>
+                                </div>
+                            </form>
+                            <table id="example1" class="col-md-4 table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Video</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (Video item in ViewBag.Videos)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.Raw(item.Url)
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Admin" asp-action="VideoDelete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Video</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

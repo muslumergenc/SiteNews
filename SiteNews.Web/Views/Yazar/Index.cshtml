@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Yazar>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    @if (TempData["message"] != null)
+                    {
+                        <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+                    }
+                    <div class="card-header">
+                        <h3 class="card-title">Yazarlar</h3><br />
+                        <a asp-action="Create" class="float-right btn btn-sm bg-gradient-info btn-flat">Yazar Ekle +</a>
+                    </div>
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Yazar Adı</th>
+                                    <th>Eklenme Tarihi</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Count() > 0)
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src='/images/yazarlar/@Html.DisplayFor(modelItem => item.Foto)' width="100" height="60" />
+                                            </td>
+                                            <td>
+                                                @item.Ad
+                                            </td>
+                                            <td>
+                                                @item.Tarih.ToShortDateString()
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Makaleler" asp-action="Index" asp-route-id="@item.Id" class="btn btn-sm btn-default">Makale Listesi</a>
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Güncelle</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="alert alert-warning">
+                                                <h3>Yazar Bulunamadı</h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Yazar Adı</th>
+                                    <th>Eklenme Tarihi</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
