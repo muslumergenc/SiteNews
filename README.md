@@ -2,7 +2,7 @@
 > AspnetCoreMVC 5.0 ile Haber Sitesi Yönetim Paneli geliştirmeye devam edeceğim...
 ### --- KONULAR ---
 
-- [x] UI, Entity, Data, Business Katmanları
+- [x] UI, Entity(Code First), Data, Business Katmanları
 - [x] Abstract, Concrete classları
 - [x] UnitOfWork örneği
 - [x] AspnetCore Identity ile SignIn ve SignUp
