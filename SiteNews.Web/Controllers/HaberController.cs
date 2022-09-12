@@ -36,6 +36,7 @@ namespace Core.Web.Controllers
                 if (q == "read")
                 {
                     Task<List<Haber>> haberler = _haberService.ListByOkuma();
+                    
                     return View(await haberler);
                 }
                 else
@@ -44,7 +45,7 @@ namespace Core.Web.Controllers
                     return View(await haberler);
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
 
                 throw;

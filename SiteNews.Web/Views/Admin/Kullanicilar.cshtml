@@ -22,6 +22,7 @@
                             <thead>
                                 <tr>
                                     <th>Email</th>
+                                    <th>Aktif Mi?</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -32,6 +33,7 @@
                                     {
                                         <tr>
                                             <td>@item.Email</td>
+                                            <td>@(item.EmailConfirmed ? "Evet" : "Hayır")</td>
                                             <td>
                                                 <a asp-action="kullaniciekle" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Güncelle</a> |
                                                 <a asp-action="kullanicilar" asp-route-id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silmek İstediğinize Eminmisiniz?')">Sil</a>
@@ -53,6 +55,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Email</th>
+                                    <th>Durum</th>
                                     <th></th>
                                 </tr>
                             </tfoot>

@@ -17,11 +17,11 @@ namespace SiteNews.Data.Concrete
             _context = context;
         }
 
-        public IHaberRepository Habers => _haberRepository = _haberRepository ?? new HaberRepository(_context);
-        public IKategoriRepository Kategoris => _kategoriRepository = _kategoriRepository ?? new KategoriRepository(_context);
-        public IYazarRepository Yazars => _yazarRepository = _yazarRepository ?? new YazarRepository(_context);
-        public IVideoRepository Videos => _videoRepository = _videoRepository ?? new VideoRepository(_context);
-        public ISosyalMedyaRepository SosyalMedya => _sosyalMedyaRepository = _sosyalMedyaRepository ?? new SosyalMedyaRepository(_context);
+        public IHaberRepository Habers => _haberRepository ??= new HaberRepository(_context);
+        public IKategoriRepository Kategoris => _kategoriRepository ??= new KategoriRepository(_context);
+        public IYazarRepository Yazars => _yazarRepository ??= new YazarRepository(_context);
+        public IVideoRepository Videos => _videoRepository ??= new VideoRepository(_context);
+        public ISosyalMedyaRepository SosyalMedya => _sosyalMedyaRepository ??= new SosyalMedyaRepository(_context);
 
         public void Dispose()
         {

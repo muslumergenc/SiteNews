@@ -12,7 +12,7 @@ namespace SiteNews.Data.Concrete
         public GenericRepository(DbContext context)
         {
             this.context = context;
-            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            //context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public void Create(Tentity entity)
@@ -32,7 +32,7 @@ namespace SiteNews.Data.Concrete
 
         public async Task<List<Tentity>> GetAll()
         {
-            return await context.Set<Tentity>().AsNoTracking().ToListAsync();
+            return await context.Set<Tentity>().AsNoTrackingWithIdentityResolution().ToListAsync();
         }
 
         public async Task<Tentity> GetById(int id)

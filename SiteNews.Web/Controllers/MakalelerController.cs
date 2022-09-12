@@ -83,7 +83,7 @@ namespace Core.Web.Controllers
                 ViewBag.Yazarlar = new SelectList(yazarlar, "Id", "Ad");
                 try
                 {
-                    if (files.Count() != 0)
+                    if (files.Length != 0)
                     {
                         Haber entity = new Haber
                         {
@@ -164,6 +164,7 @@ namespace Core.Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequestFormLimits(MultipartBodyLengthLimit = 104857600)]
         public async Task<IActionResult> Edit(int id, Haber haber, IFormFile[] files, int YazarId)
         {
             try

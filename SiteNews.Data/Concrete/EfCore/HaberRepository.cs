@@ -23,7 +23,7 @@ namespace SiteNews.Data.Concrete.EfCore
 
         public async Task<List<Haber>> ListById()
         {
-            return await CoreContext.Habers.Where(x => x.MakaleMi == false).Include(x => x.Kategoris).OrderByDescending(x => x.Id).ToListAsync();
+            return await CoreContext.Habers.Where(x => x.MakaleMi == false).Include(x => x.Kategoris).ToListAsync();
         }
        
         public async Task<List<Haber>> ListByMakaleId()
@@ -33,7 +33,7 @@ namespace SiteNews.Data.Concrete.EfCore
       
         public async Task<List<Haber>> ListByKategori(int katId)
         {
-            return await CoreContext.Habers.Where(x => x.KategoriId == katId).ToListAsync();
+           return await CoreContext.Habers.Where(x => x.KategoriId == katId).ToListAsync();
         }
 
         public async Task<List<Haber>> ListByMakale()
