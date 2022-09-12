@@ -1,5 +1,5 @@
 # SiteNews
-> AspnetCoreMVC 5.0 ile Haber Sitesi Yönetim Paneli geliştirmeye devam edeceğim...
+> AspnetCoreMVC 5.0 ile Haber Sitesi Yönetim Paneli çalışmalar devam ediyor...
 ### --- KONULAR ---
 
 - [x] UI, Entity(Code First), Data, Business Katmanları
