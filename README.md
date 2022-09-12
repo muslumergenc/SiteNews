@@ -14,6 +14,7 @@
 - [x] ViewComponents
 - [x] Dinamik yapıya sahip Alert Message yapısı
 - [x] Seo altyapısı ve özel dinamik url hazırlama
+- [x] UseQueryTrackingBehavior
 - [ ] Eklenecek Haberin özelliklerine göre listeleme ve puanlama sistemi...
 
 
